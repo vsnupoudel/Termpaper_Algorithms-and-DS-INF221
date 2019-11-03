@@ -192,6 +192,9 @@ Python uses a now popularly used sort algorithm in many programming languages, c
 inventor. Yet to put reference article or link here...
 
 \section{Methods}\label{sec:methods}
+
+\subsection{Python implementation of algorithms}\label{sec:python implementation}
+
 We wrote the python implementations for heap sort, merge sort and quick sort following the psuedo code from CLRS. We wrote
 the code in a way that the only input we need to provide is the input array. The functions will calculate the length of the array 
 or subarrayif their algorithm needs the length. Merge sort and quick sort call themselves recursively with 3 parameters, while heap
@@ -209,18 +212,19 @@ def quick_comparison_and_swap (Inputlist, start, end):
     index_less_than = start -1
     
     for comparison_index in range(start,end):
-        if Inputlist[comparison_index]<= pivot_last:
-            index_less_than += 1
-            Inputlist[index_less_than], Inputlist[comparison_index]\
-            = Inputlist[comparison_index], Inputlist[index_less_than]  
+        if Inputlist[c_index]<= pivot_last:
+            l_index += 1
+            Inputlist[l_index], Inputlist[c_index]
+            = Inputlist[c_index], Inputlist[l_index]  
             
-    Inputlist[end] , Inputlist[index_less_than+1] \
-    =   Inputlist[index_less_than+1], Inputlist[end]  
+    Inputlist[end] , Inputlist[l_index+1] 
+    =   Inputlist[l_index+1], Inputlist[end]  
 
     return index_less_than+1  
 \end{verbatim}
 \end{listing}
 
+\subsection{Timing function}\label{sec:timing function}
 
 Secondly, to benchmark the 3 algorithms we  implemented along with numpy.sort() and sorted(), we use the timeit library. The skeleton of the 
 function was provided by professor H.E. Plesser, which is built on. Since the process can slow down due to other processes in the computer, w
@@ -237,10 +241,12 @@ import numpy as np
 import timeit
 import copy
 
-def timing_function(number_of_data_points, sort_type,randomization_type, seed_number=12235):
+def timing_function(number_of_data_points, sort_type
+,randomization_type, seed_number=12235):
     np.random.seed (seed_number)
     test_data = np.random.random(number_of_data_points ,)
     test_data = list(test_data)
+
     if randomization_type=='reverse':
         test_data= sorted(test_data, reverse =True)
     elif randomization_type=='sorted':
@@ -256,18 +262,59 @@ def timing_function(number_of_data_points, sort_type,randomization_type, seed_nu
 \end{verbatim}
 \end{listing}
 
-
+\subsection{Analysis, tables and plots}\label{sec:analysis}
 After that, we compare the runtimes of 5 algorithms for all data sizes in a number of line graphs. Similary, we plot a scatter plot of the 7 runtimes 
 we got for each of the algorithms and see if they show any statistical significance. We also compare the runtime for reverse sorted and already sorted
 data and see if it drastically different than the random data for any of the algorithm.
 
+\subsection{Hardwares and softwares}\label{sec:hardwares and softwares}
+The runtimes were obtained from a machine with the follwing configuration. 
+
+Also, the following version of python and its libraries were used.
+\begin{itemize}
+\item Processor:    AMD A4-3330MX APU  2.30 GHz
+\item Caches:        L1D-64 KB*2 , L1I-64KB*2, L2 -512KB*2
+\item Memory :      DDR3 4 GB, 800 MHz
+\item OS :              Microsoft Windows 7 Professional
+\end{itemize}
+Details with screenshots are at https://github.com/vsnupoudel/termpaper01.
+
+Following are the versions of packages used in Python 3.7.4:
+\begin{itemize}
+\item Pandas:    '0.25.1'
+\item Pandasql:    '0.7.3'
+\item Numpy :      '1.16.5'
+\item matplotlib :          '3.1.1'
+\item nbimporter :          '0.3.1'
+\item timeit :         
+\item pickle :       
+\item copy :        
+\end{itemize}
+
+
 \section{Results}\label{sec:results}
+We can see that numpy sort is the most efficient for large list size...
+Then comes Python sorted...
+....
+.....
+
 
 \section{Discussion}\label{sec:discussion}
+Since numpy uses.... and python uses....
+Quick sort ran into maximum recursion....
+....
+
+
+
 
 \section{Acknowledgements}\label{sec:acknowledgements}
+We would like to thank Professor H.E Plesser and our TA Krista Gilman for their guidance and for answering our
+questions related to the paper.
 
 \section{References}\label{sec:references}
+.......
+..........
+...............
 
 %% The next two lines define the bibliography style to be used, and
 %% the bibliography file.
