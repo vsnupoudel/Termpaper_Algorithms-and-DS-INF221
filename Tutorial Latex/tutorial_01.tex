@@ -1,6 +1,4 @@
-\documentclass{article}
-\begin{document}
-
+\documentclass{acmart}
 \title{Benchmarking sorting algorithms in Python}
 \subtitle{INF221 Term Paper, NMBU, Autumn 2019}
 
@@ -11,16 +9,19 @@
 \author{Mohamed Radwan}
 \email{mohamed.radwan@nmbu.no}
 
+\begin{document}
+\maketitle
 
-\begin{abstract}
+
+
+
 In this paper, we generate the runtimes for three pure sorting algorithms that follow the divide-and-conquer approach. In addition, we benchmark the inbuilt numpy sort function- np.sort() and also the python sort function - sorted(). 
 Then we compare these real-life runtimes with the theoritical runtimes that we have learnt as a part of the Algorithms 
 and data structure course at NMBU. We also analyse and plot the distributions of runtimes we foundData is collected for list sizes  from 10 to 10 million in order to study the asymtotic behavior of these algorithms.
 The work has been done using python and its libraries.
-\end{abstract}
 
 
-\begin{Introduction}
+
 
 Sorting and searching are basic and routine operations for computers of any type. Much research has already been done in the subject, and computers today use the most robust algorithms possible that meet their specific requirement/application. Many applications use a blend of 2 or more algorithms depending on the nature input data or the application.  However, it would be interesting to see how the  sorting algorithms behave stand-alone  in real life.
 
@@ -36,12 +37,7 @@ wrote to extract the runtime information. We also discuss the type and amount of
 our analysis. In the Discussion section, we summarize our findings and compare them to the theoritical expectations. We also compare the 
 standalone algorithms with the pre-implemented algorithms in numpy and python. Acknowledgements and References conclude the paper.
 
-\end{Introduction}
 
-
-\begin{acks}
-We are grateful to \dots for \dots.
-\end{acks}
 
 
 \end{document}
