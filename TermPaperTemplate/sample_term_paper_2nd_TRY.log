@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7140 64-bit) (preloaded format=pdflatex 2019.8.28)  6 NOV 2019 15:00
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7140 64-bit) (preloaded format=pdflatex 2019.8.28)  11 NOV 2019 11:21
 entering extended mode
 **./sample_term_paper_2nd_TRY.tex
 (sample_term_paper_2nd_TRY.tex
@@ -35,7 +35,6 @@ Package acmart Info: Explicitly selecting natbib mode on input line 129.
 Package acmart Info: Not using anonymous mode on input line 137.
 Package acmart Info: Not using timestamp mode on input line 145.
 Package acmart Info: Not using authordraft mode on input line 155.
-Package acmart Info: Using nonacm mode on input line 164.
 Package acmart Info: Explicitly selecting natbib mode on input line 164.
 Package acmart Info: Using screen mode on input line 164.
 Class acmart Info: Using format sigconf, number 4 on input line 164.
@@ -829,6 +828,12 @@ nuxLibertineT-TLF.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
 (Font)              scaled to size 9.0pt on input line 2873.
 )
+("C:\Program Files\MiKTeX 2.9\tex/latex/tools\verbatim.sty"
+Package: verbatim 2014/10/28 v1.5q LaTeX2e package for verbatim enhancements
+\every@verbatim=\toks35
+\verbatim@line=\toks36
+\verbatim@in@stream=\read2
+)
 ("C:\Program Files\MiKTeX 2.9\tex/latex/clrscode3e\clrscode3e.sty"
 Package: clrscode3e 
 \c@codelinenumber=\count143
@@ -841,7 +846,7 @@ Package: clrscode3e
 ("C:\Program Files\MiKTeX 2.9\tex/latex/listings\listings.sty"
 \lst@mode=\count146
 \lst@gtempboxa=\box36
-\lst@token=\toks35
+\lst@token=\toks37
 \lst@length=\count147
 \lst@currlwidth=\dimen156
 \lst@column=\count148
@@ -866,6 +871,55 @@ Package: listings 2019/09/10 1.8c (Carsten Heinz)
 ("C:\Program Files\MiKTeX 2.9\tex/latex/listings\lstlang1.sty"
 File: lstlang1.sty 2019/09/10 1.8c listings language file
 )
+("C:\Program Files\MiKTeX 2.9\tex/latex/tools\multicol.sty"
+Package: multicol 2018/12/27 v1.8v multicolumn formatting (FMi)
+\c@tracingmulticols=\count154
+\mult@box=\box38
+\multicol@leftmargin=\dimen160
+\c@unbalance=\count155
+\c@collectmore=\count156
+\doublecol@number=\count157
+\multicoltolerance=\count158
+\multicolpretolerance=\count159
+\full@width=\dimen161
+\page@free=\dimen162
+\premulticols=\dimen163
+\postmulticols=\dimen164
+\multicolsep=\skip71
+\multicolbaselineskip=\skip72
+\partial@page=\box39
+\last@line=\box40
+\maxbalancingoverflow=\dimen165
+\mult@rightbox=\box41
+\mult@grightbox=\box42
+\mult@gfirstbox=\box43
+\mult@firstbox=\box44
+\@tempa=\box45
+\@tempa=\box46
+\@tempa=\box47
+\@tempa=\box48
+\@tempa=\box49
+\@tempa=\box50
+\@tempa=\box51
+\@tempa=\box52
+\@tempa=\box53
+\@tempa=\box54
+\@tempa=\box55
+\@tempa=\box56
+\@tempa=\box57
+\@tempa=\box58
+\@tempa=\box59
+\@tempa=\box60
+\@tempa=\box61
+\c@columnbadness=\count160
+\c@finalcolumnbadness=\count161
+\last@try=\dimen166
+\multicolovershoot=\dimen167
+\multicolundershoot=\dimen168
+\mult@nat@firstbox=\box62
+\colbreak@box=\box63
+\mc@col@check@num=\count162
+)
 ("C:\Program Files\MiKTeX 2.9\tex/latex/base\fontenc.sty"
 Package: fontenc 2018/08/11 v2.0j Standard LaTeX package
 
@@ -883,481 +937,4 @@ LaTeX Font Info:    Overwriting symbol font `letters' in version `normal'
 LaTeX Font Info:    Encoding `LMS' has changed to `OMS' for symbol font
 (Font)              `symbols' in the math version `normal' on input line 24.
 LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
-(Font)                  LMS/ntxsy/m/n --> OMS/lmsy/m/n on input line 24.
-LaTeX Font Info:    Encoding `LMX' has changed to `OMX' for symbol font
-(Font)              `largesymbols' in the math version `normal' on input line 2
-5.
-LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
-(Font)                  LMX/ntxexx/m/n --> OMX/lmex/m/n on input line 25.
-LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/LinuxLibertineT-TLF/sb/n --> OT1/lmr/bx/n on input 
-line 26.
-LaTeX Font Info:    Overwriting symbol font `letters' in version `bold'
-(Font)                  OML/nxlmi/b/it --> OML/lmm/b/it on input line 27.
-LaTeX Font Info:    Encoding `LMS' has changed to `OMS' for symbol font
-(Font)              `symbols' in the math version `bold' on input line 28.
-LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
-(Font)                  LMS/ntxsy/b/n --> OMS/lmsy/b/n on input line 28.
-LaTeX Font Info:    Encoding `LMX' has changed to `OMX' for symbol font
-(Font)              `largesymbols' in the math version `bold' on input line 29.
-
-LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
-(Font)                  LMX/ntxexx/b/n --> OMX/lmex/m/n on input line 29.
-LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/LinuxLibertineT-TLF/sb/n --> OT1/lmr/bx/n on input 
-line 31.
-LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  T1/LinuxBiolinumT-TLF/m/n --> OT1/lmss/m/n on input lin
-e 32.
-LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/LinuxLibertineT-TLF/m/it --> OT1/lmr/m/it on input 
-line 33.
-LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  T1/zi4/m/n --> OT1/lmtt/m/n on input line 34.
-LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/LinuxLibertineT-TLF/sb/n --> OT1/lmr/bx/n on input 
-line 35.
-LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  T1/LinuxBiolinumT-TLF/b/n --> OT1/lmss/bx/n on input li
-ne 36.
-LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/LinuxLibertineT-TLF/sb/it --> OT1/lmr/bx/it on inpu
-t line 37.
-LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  T1/zi4/b/n --> OT1/lmtt/m/n on input line 38.
-)
-\@float@every@listing=\toks36
-\c@listing=\count154
-Package hyperref Info: Option `colorlinks' set `true' on input line 57.
-Package hyperref Info: Option `pdfdisplaydoctitle' set `true' on input line 57.
-
-\c@theorem=\count155
-
-Include comment 'screenonly' Excluding comment 'printonly'
-Include comment 'anonsuppress' (sample_term_paper_2nd_TRY.aux)
-\openout1 = `sample_term_paper_2nd_TRY.aux'.
-
-LaTeX Font Info:    Checking defaults for OML/nxlmi/m/it on input line 57.
-LaTeX Font Info:    Try loading font information for OML+nxlmi on input line 57
-.
-
-("C:\Program Files\MiKTeX 2.9\tex/latex/newtx\omlnxlmi.fd"
-File: omlnxlmi.fd 2013/11/19 Fontinst v1.933 font definitions for OML/nxlmi.
-)
-LaTeX Font Info:    ... okay on input line 57.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 57.
-LaTeX Font Info:    ... okay on input line 57.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 57.
-LaTeX Font Info:    ... okay on input line 57.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 57.
-LaTeX Font Info:    ... okay on input line 57.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 57.
-LaTeX Font Info:    ... okay on input line 57.
-LaTeX Font Info:    Checking defaults for U/ntxexa/m/n on input line 57.
-LaTeX Font Info:    Try loading font information for U+ntxexa on input line 57.
-
-
-("C:\Program Files\MiKTeX 2.9\tex/latex/newtx\untxexa.fd"
-File: untxexa.fd 2012/04/16 Fontinst v1.933 font definitions for U/ntxexa.
-)
-LaTeX Font Info:    ... okay on input line 57.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 57.
-LaTeX Font Info:    ... okay on input line 57.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 57.
-LaTeX Font Info:    ... okay on input line 57.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 57.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 57.
-
-("C:\Program Files\MiKTeX 2.9\tex/latex/base\ts1cmr.fd"
-File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    ... okay on input line 57.
-LaTeX Font Info:    Checking defaults for LMS/ntxsy/m/n on input line 57.
-LaTeX Font Info:    Try loading font information for LMS+ntxsy on input line 57
-.
-
-("C:\Program Files\MiKTeX 2.9\tex/latex/newtx\lmsntxsy.fd"
-File: lmsntxsy.fd 2016/07/02 Fontinst v1.933 font definitions for LMS/ntxsy.
-)
-LaTeX Font Info:    ... okay on input line 57.
-LaTeX Font Info:    Checking defaults for LMX/ntxexx/m/n on input line 57.
-LaTeX Font Info:    Try loading font information for LMX+ntxexx on input line 5
-7.
-
-("C:\Program Files\MiKTeX 2.9\tex/latex/newtx\lmxntxexx.fd"
-File: lmxntxexx.fd 2016/07/03 Fontinst v1.933 font definitions for LMX/ntxexx.
-)
-LaTeX Font Info:    ... okay on input line 57.
-LaTeX Font Info:    Try loading font information for T1+lmr on input line 57.
-
-("C:\Program Files\MiKTeX 2.9\tex/latex/lm\t1lmr.fd"
-File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
-)
-LaTeX Font Info:    Try loading font information for OT1+lmr on input line 57.
-
-("C:\Program Files\MiKTeX 2.9\tex/latex/lm\ot1lmr.fd"
-File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
-)<<ot1.cmap>>
-LaTeX Font Info:    Try loading font information for OML+lmm on input line 57.
-
-("C:\Program Files\MiKTeX 2.9\tex/latex/lm\omllmm.fd"
-File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
-)<<oml.cmap>>
-LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 57.
-
-
-("C:\Program Files\MiKTeX 2.9\tex/latex/lm\omslmsy.fd"
-File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
-)<<oms.cmap>>
-LaTeX Font Info:    Try loading font information for OMX+lmex on input line 57.
-
-
-("C:\Program Files\MiKTeX 2.9\tex/latex/lm\omxlmex.fd"
-File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
-)
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7.3> on input line 57.
-<<omx.cmap>>
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5.5> on input line 57.
-LaTeX Font Info:    Try loading font information for U+msa on input line 57.
-
-("C:\Program Files\MiKTeX 2.9\tex/latex/amsfonts\umsa.fd"
-File: umsa.fd 2013/01/14 v3.01 AMS symbols A
-)
-LaTeX Font Info:    Try loading font information for U+msb on input line 57.
-
-("C:\Program Files\MiKTeX 2.9\tex/latex/amsfonts\umsb.fd"
-File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
-LaTeX Font Info:    Try loading font information for U+ntxmia on input line 57.
-
-
-("C:\Program Files\MiKTeX 2.9\tex/latex/newtx\untxmia.fd"
-File: untxmia.fd 2018/04/14 Fontinst v1.933 font definitions for U/ntxmia.
-)
-LaTeX Font Info:    Try loading font information for U+ntxsym on input line 57.
-
-
-("C:\Program Files\MiKTeX 2.9\tex/latex/newtx\untxsym.fd"
-File: untxsym.fd 2015/03/20 Fontinst v1.933 font definitions for U/ntxsym.
-)
-LaTeX Font Info:    Try loading font information for U+ntxsyc on input line 57.
-
-
-("C:\Program Files\MiKTeX 2.9\tex/latex/newtx\untxsyc.fd"
-File: untxsyc.fd 2012/04/12 Fontinst v1.933 font definitions for U/ntxsyc.
-)
-Missing character: There is no ¹ in font lmsy7!
-LaTeX Info: Redefining \microtypecontext on input line 57.
-Package microtype Info: Generating PDF output.
-Package microtype Info: Character protrusion enabled (level 2).
-Package microtype Info: Using default protrusion set `alltext'.
-Package microtype Info: Automatic font expansion enabled (level 2),
-(microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
-Package microtype Info: Using default expansion set `basictext'.
-Package microtype Info: No adjustment of tracking.
-Package microtype Info: No adjustment of interword spacing.
-Package microtype Info: No adjustment of character kerning.
-
-("C:\Program Files\MiKTeX 2.9\tex/latex/microtype\mt-cmr.cfg"
-File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman 
-(RS)
-)
-ABD: EveryShipout initializing macros
-\AtBeginShipoutBox=\box38
-Package hyperref Info: Link coloring ON on input line 57.
-
-("C:\Program Files\MiKTeX 2.9\tex/latex/hyperref\nameref.sty"
-Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
-
-("C:\Program Files\MiKTeX 2.9\tex/generic/oberdiek\gettitlestring.sty"
-Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
-)
-\c@section@level=\count156
-)
-LaTeX Info: Redefining \ref on input line 57.
-LaTeX Info: Redefining \pageref on input line 57.
-LaTeX Info: Redefining \nameref on input line 57.
-
-(sample_term_paper_2nd_TRY.out) (sample_term_paper_2nd_TRY.out)
-\@outlinefile=\write4
-\openout4 = `sample_term_paper_2nd_TRY.out'.
-
-
-("C:\Program Files\MiKTeX 2.9\tex/context/base/mkii\supp-pdf.mkii"
-[Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count157
-\scratchdimen=\dimen160
-\scratchbox=\box39
-\nofMPsegments=\count158
-\nofMParguments=\count159
-\everyMPshowfont=\toks37
-\MPscratchCnt=\count160
-\MPscratchDim=\dimen161
-\MPnumerator=\count161
-\makeMPintoPDFobject=\count162
-\everyMPtoPDFconversion=\toks38
-) ("C:\Program Files\MiKTeX 2.9\tex/latex/oberdiek\epstopdf-base.sty"
-Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
-
-("C:\Program Files\MiKTeX 2.9\tex/latex/oberdiek\grfext.sty"
-Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
-)
-Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
-38.
-Package grfext Info: Graphics extension search list:
-(grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPE
-G,.JBIG2,.JB2,.eps]
-(grfext)             \AppendGraphicsExtensions on input line 456.
-)
-*geometry* driver: auto-detecting
-*geometry* detected driver: pdftex
-*geometry* verbose mode - [ preamble ] result:
-* driver: pdftex
-* paper: custom
-* layout: <same size as paper>
-* layoutoffset:(h,v)=(0.0pt,0.0pt)
-* modes: includehead includefoot twoside heightrounded 
-* h-part:(L,W,R)=(54.0pt, 506.295pt, 54.0pt)
-* v-part:(T,H,B)=(57.0pt, 664.96999pt, 73.0pt)
-* \paperwidth=614.295pt
-* \paperheight=794.96999pt
-* \textwidth=506.295pt
-* \textheight=626.0pt
-* \oddsidemargin=-18.26999pt
-* \evensidemargin=-18.26999pt
-* \topmargin=-15.26999pt
-* \headheight=13.0pt
-* \headsep=14.0pt
-* \topskip=10.0pt
-* \footskip=12.0pt
-* \marginparwidth=24.0pt
-* \marginparsep=11.0pt
-* \columnsep=24.0pt
-* \skip\footins=7.0pt plus 11.0pt
-* \hoffset=0.0pt
-* \voffset=0.0pt
-* \mag=1000
-* \@twocolumnfalse
-* \@twosidetrue
-* \@mparswitchtrue
-* \@reversemarginfalse
-* (1in=72.27pt=25.4mm, 1cm=28.453pt)
-
-\c@mv@tabular=\count163
-\c@mv@boldtabular=\count164
-("C:\Program Files\MiKTeX 2.9\tex/latex/upquote\upquote.sty"
-Package: upquote 2012/04/19 v1.3 upright-quote and grave-accent glyphs in verba
-tim
-)
-Package caption Info: Begin \AtBeginDocument code.
-Package caption Info: float package is loaded.
-Package caption Info: listings package is loaded.
-Package caption Info: End \AtBeginDocument code.
-\c@lstlisting=\count165
-LaTeX Font Info:    Try loading font information for T1+lmss on input line 86.
-
-("C:\Program Files\MiKTeX 2.9\tex/latex/lm\t1lmss.fd"
-File: t1lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
-)
-Package microtype Info: Loading generic protrusion settings for font family
-(microtype)             `lmss' (encoding: T1).
-(microtype)             For optimal results, create family-specific settings.
-(microtype)             See the microtype manual for details.
-LaTeX Font Info:    Font shape `T1/lmss/b/n' in size <17.28> not available
-(Font)              Font shape `T1/lmss/bx/n' tried instead on input line 86.
-LaTeX Font Info:    Font shape `T1/lmss/b/n' in size <9> not available
-(Font)              Font shape `T1/lmss/bx/n' tried instead on input line 86.
-LaTeX Font Info:    Font shape `T1/lmss/b/n' in size <12> not available
-(Font)              Font shape `T1/lmss/bx/n' tried instead on input line 86.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 86.
-
-("C:\Program Files\MiKTeX 2.9\tex/latex/microtype\mt-msa.cfg"
-File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
-)
-("C:\Program Files\MiKTeX 2.9\tex/latex/microtype\mt-msb.cfg"
-File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
-)
-Package hyperref Info: bookmark level for unknown listing defaults to 0 on inpu
-t line 113.
-
-
-Package natbib Warning: Citation `CLRS_2009' on page 1 undefined on input line 
-113.
-
-
-Package natbib Warning: Citation `CLRS_2009' on page 1 undefined on input line 
-113.
-
-LaTeX Font Info:    Try loading font information for T1+lmtt on input line 116.
-
-("C:\Program Files\MiKTeX 2.9\tex/latex/lm\t1lmtt.fd"
-File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
-)
-Package microtype Info: Loading generic protrusion settings for font family
-(microtype)             `lmtt' (encoding: T1).
-(microtype)             For optimal results, create family-specific settings.
-(microtype)             See the microtype manual for details.
-
-
-Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 124.
-
-
-Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 124.
-
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <9> on input line 127.
-Missing character: There is no ¹ in font lmsy9!
-Missing character: There is no ¹ in font lmsy9!
-Missing character: There is no º in font lmsy9!
-
-Package natbib Warning: Citation `CLRS_2009' on page 1 undefined on input line 
-133.
-
-
-Package natbib Warning: Citation `CLRS_2009' on page 1 undefined on input line 
-133.
-
-
-Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 144.
-
-
-Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 144.
-
-Missing character: There is no ¹ in font lmsy9!
-Missing character: There is no º in font lmsy9!
-
-Package natbib Warning: Citation `CLRS_2009' on page 1 undefined on input line 
-156.
-
-
-Package natbib Warning: Citation `CLRS_2009' on page 1 undefined on input line 
-156.
-
-
-Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 177.
-
-
-Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 177.
-
-Missing character: There is no ¹ in font lmsy9!
-Missing character: There is no º in font lmsy9!
-[1.1{C:/Users/admin/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}
-
-]
-Overfull \hbox (11.63951pt too wide) in paragraph at lines 224--224
-[]\T1/lmtt/m/n/9 def quick_comparison_and_swap (Inputlist, start, end):[] 
- []
-
-
-Overfull \hbox (4.55203pt too wide) in paragraph at lines 224--224
-[]            \T1/lmtt/m/n/9 = Inputlist[c_index], Inputlist[l_index][] 
- []
-
-
-Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 225.
-
-
-Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 225.
-
-
-Overfull \hbox (4.55203pt too wide) in paragraph at lines 262--262
-[]\T1/lmtt/m/n/9 def timing_function(number_of_data_points, sort_type[] 
- []
-
-
-Overfull \hbox (27.232pt too wide) in paragraph at lines 262--262
-[]    \T1/lmtt/m/n/9 test_data = np.random.random(number_of_data_points ,)[] 
- []
-
-LaTeX Font Info:    Try loading font information for TS1+lmtt on input line 262
-.
-("C:\Program Files\MiKTeX 2.9\tex/latex/lm\ts1lmtt.fd"
-File: ts1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
-)
-Package microtype Info: Loading generic protrusion settings for font family
-(microtype)             `lmtt' (encoding: TS1).
-(microtype)             For optimal results, create family-specific settings.
-(microtype)             See the microtype manual for details.
-Package microtype Info: Character `texttrademark ' is missing
-(microtype)             in font `TS1/lmtt/m/n/9'.
-(microtype)             Ignoring protrusion settings for this character.
-
-Overfull \hbox (54.16443pt too wide) in paragraph at lines 262--262
-[]    \T1/lmtt/m/n/9 clock = timeit.Timer ( stmt =\TS1/lmtt/m/n/9 '\T1/lmtt/m/n
-/9 sort_func ( copy ( data) ) \TS1/lmtt/m/n/9 '\T1/lmtt/m/n/9 ,[] 
- []
-
-
-Overfull \hbox (49.43944pt too wide) in paragraph at lines 262--262
-[]                           \T1/lmtt/m/n/9 globals ={ \TS1/lmtt/m/n/9 '\T1/lmt
-t/m/n/9 sort_func\TS1/lmtt/m/n/9 '\T1/lmtt/m/n/9 : sort_type ,[] 
- []
-
-
-Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 263.
-
-
-Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 263.
-
-[2.2]
-Overfull \hbox (59.70457pt too wide) in paragraph at lines 280--281
-\T1/lmr/m/n/9 (-20) Details with screen-shots are at https://github.com/vsnupou
-del/termpaper01. 
- []
-
-No file sample_term_paper_2nd_TRY.bbl.
-
-Package natbib Warning: There were undefined citations.
-
-[3.3
-
-]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 324.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 324.
- (sample_term_paper_2nd_TRY.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 324.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 324.
-Package rerunfilecheck Info: File `sample_term_paper_2nd_TRY.out' has not chang
-ed.
-(rerunfilecheck)             Checksum: 3892F2CBD7FAB93598B9E9DE8061F19A;2483.
- ) 
-Here is how much of TeX's memory you used:
- 19603 strings out of 492895
- 289453 string characters out of 3133479
- 605536 words of memory out of 3000000
- 22882 multiletter control sequences out of 15000+200000
- 75286 words of font info for 103 fonts, out of 3000000 for 9000
- 1302 hyphenation exceptions out of 8191
- 60i,11n,94p,818b,499s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/lm/lm-ts1.enc}{C:/Program Files/
-MiKTeX 2.9/fonts/enc/dvips/lm/lm-rm.enc}{C:/Program Files/MiKTeX 2.9/fonts/enc/
-dvips/lm/lm-ec.enc}{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/lm/lm-mathsy.en
-c}{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/lm/lm-mathit.enc}<C:/Program Fil
-es/MiKTeX 2.9/fonts/type1/public/lm/lmb10.pfb><C:/Program Files/MiKTeX 2.9/font
-s/type1/public/lm/lmmi9.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/
-lmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmr12.pfb><C:/Prog
-ram Files/MiKTeX 2.9/fonts/type1/public/lm/lmr7.pfb><C:/Program Files/MiKTeX 2.
-9/fonts/type1/public/lm/lmr9.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/publi
-c/lm/lmss12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmss8.pfb><C
-:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmssbx10.pfb><C:/Program Files
-/MiKTeX 2.9/fonts/type1/public/lm/lmsy9.pfb><C:/Program Files/MiKTeX 2.9/fonts/
-type1/public/lm/lmtt9.pfb>
-Output written on sample_term_paper_2nd_TRY.pdf (3 pages, 267251 bytes).
-PDF statistics:
- 167 PDF objects out of 1000 (max. 8388607)
- 27 named destinations out of 1000 (max. 500000)
- 19101 words of extra memory for PDF output out of 20736 (max. 10000000)
-
+(Font)  

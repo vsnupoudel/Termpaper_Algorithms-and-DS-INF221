@@ -1,0 +1,495 @@
+%%
+%% This is file `sample-sigconf.tex',
+%% generated with the docstrip utility.
+%%
+%% The original source files were:
+%%
+%% samples.dtx  (with options: `sigconf')
+%% 
+%% IMPORTANT NOTICE:
+%% 
+%% For the copyright see the source file.
+%% 
+%% Any modified versions of this file must be renamed
+%% with new filenames distinct from sample-sigconf.tex.
+%% 
+%% For distribution of the original source see the terms
+%% for copying and modification in the file samples.dtx.
+%% 
+%% This generated file may be distributed as long as the
+%% original source files, as listed above, are part of the
+%% same distribution. (The sources need not necessarily be
+%% in the same archive or directory.)
+%%
+%% The first command in your LaTeX source must be the \documentclass command.
+\documentclass[sigconf, nonacm, natbib, screen, balance=False]{acmart}
+
+% Documentation for packages
+% - ACM Article Template
+%    https://www.acm.org/publications/proceedings-template
+% - Pseudocode typesetting CLRS-style:
+%    https://www.cs.dartmouth.edu/~thc/clrscode/clrscode3e.pdf
+% - Python code typesetting
+%    http://ctan.uib.no/macros/latex/contrib/listings/listings.pdf
+% - AMS Math
+%    http://ctan.uib.no/macros/latex/required/amsmath/amsldoc.pdf
+% - Graphics
+%    http://ctan.uib.no/macros/latex/required/graphics/grfguide.pdf
+
+\usepackage{verbatim}
+\usepackage{clrscode3e}  
+\usepackage{listings}
+\lstset{language=Python, basicstyle=\ttfamily}
+%for multiple columns
+\usepackage{multicol}
+
+%adding package for the font error
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+% adding package to insert figures
+\usepackage{graphicx}
+% based on https://tex.stackexchange.com/questions/279240/float-for-lstlisting
+\usepackage{float}
+\floatstyle{ruled}
+\newfloat{listing}{tbph}{lop}
+\floatname{listing}{Listing}
+\def\lstfloatautorefname{Listing} % needed for hyperref/auroref
+
+\citestyle{acmauthoryear}
+
+%% end of the preamble, start of the body of the document source.
+\begin{document}
+
+%%
+%% The "title" command has an optional parameter,
+%% allowing the author to define a "short title" to be used in page headers.
+\title{Benchmarking sorting algorithms in Python}
+\subtitle{INF221 Term Paper, NMBU, Autumn 2019}
+
+\author{Bishnu Poudel}
+\email{bishnu.poudel@nmbu.no}
+\affiliation{MS in Data Science, NMBU} 
+
+\author{Mohamed Radwan}
+\email{mohamed.radwan@nmbu.no}
+\affiliation{MS in Data Science, NMBU} 
+
+%% The abstract is a short summary of the work to be presented in the
+%% article.
+\begin{abstract}
+In this paper, we generate the run-times for three pure sorting algorithms that use the divide-and-conquer approach to sort data. In addition to the three, the inbuilt numpy sort function- numpy.sort() and the python sorted function- sorted() are also timed. Then we compare these real-life run-times with the theoretical run-times that we have learnt as a part of the 'Computer Science for Data Scientists' course at NMBU. We use plots and descriptive statistics to analyse our observations and to draw conclusions. 
+\end{abstract}
+
+%% This command processes the author and affiliation and title
+%% information and builds the first part of the formatted document.
+\maketitle
+
+\section{Introduction}\label{sec:intro}
+Sorting and searching are very basic and routine operations for computers of any type. Much research has already been done in the subject, and computers/soft-wares today use the most robust algorithms that they can lay their hands on in order to meet their particular requirements. Many applications use a blend of 2 or more algorithms depending on the nature input data or the application. However, it would be interesting to see how the  sorting algorithms behave stand-alone in real-life scenario, or in real-machine situation!
+
+This work is also the term-paper for the 'Computer Science for Data Scientists' course at NMBU. \label{questions}The main questions we are trying to address are: Do the algorithms show their theoretical average case behavior in real situations? Which of the stand-alone sort is more efficient? Do these standalone sorts have a chance against the built-in sorts of numpy and python? How are the run-times of each run distributed, is there any statistical significance in the distribution?
+
+In the Theory section, we describe the pseudo-code of the algorithms together with their theoretical run-times. We discuss the best, average and the worst cases.  In the Methods section, we describe the python implementation of the algorithms, and also the python-functions we wrote to extract the run-time information. We also discuss the type and amount of data we collected. Results section has facts and figures from our analysis. In the Discussion section, we summarize our findings and compare them to the theoretical expectations. Acknowledgements and References conclude the paper.
+
+\section{Theory}\label{sec:theory}
+We briefly discuss the sorts we are bench-marking here. By following the given pseudo-codes, we wrote python implementations for heap, merge and quick sort. Numpy's \textbf{sort} function and python's \textbf{sorted} function are used in their default form without additional parameters. The three permutations of data we're using in our analysis are random data, data sorted in ascending order, and data sorted in descending order. The output is sorted in ascending order.
+
+\subsection{Heap Sort}\label{sec:heap sort}
+
+\begin{listing}
+ % Pseudocode caption above the code.
+\caption{Heap sort algorithm from \citet[Ch.~6.4]{CLRS_2009}.}
+\label{lst:heap_algo}
+\begin{verbatim}
+HEAP-SORT(A)
+    BUILD-MAX-HEAP(A)
+    for i = A.length downto 2
+        swap A[1] and A[i]
+        A.heap_size = A.heap_size - 1
+        MAX-HEAPIFY(A, 1)
+    return A
+\end{verbatim}
+\end{listing}
+
+Heap sort uses the max-heap (or min heap property) to sort elements in an array. First we build a max heap (BUILD-MAX-HEAP) out of the given array. Then inside a loop, we isolate the root of the heap from the array, storing it at the end of the array. Then we call MAX-HEAPIFY on the rest of the array, storing away the root each time. The heap size decreases by 1 in each of the MAX-HEAPIFY calls. Heap sort is not stable i.e. the keys having exact value might be interchanged. Therefore, it might not be useful while sorting with multiple keys, for instance in a database table.
+Also heap sort does the sorting in place, so no extra memory is required. Theoretically, all 3 cases of heap sort (worst, best and average) are of the order $n*log(n)$. It will be interesting to see which of the three sets of data ( random, ordered, reversely ordered) data performs the best on heap sort. 
+
+\subsection{Merge Sort}\label{sec:merge sort}
+
+\begin{listing}
+  % Pseudocode caption above the code.
+  \caption{Merge sort algorithm used}
+  \label{lst:merge_algo}
+\begin{verbatim}
+def MERGE-SORT(A,p,r):    
+    if p = r:
+        return A[p]
+    q = floor( (p+r) / 2) 
+    B = MERGE-SORT(A,p,q)
+    C = MERGE-SORT(A,q+1,r)
+    D = MERGE(B,C)
+    return D
+    
+\end{verbatim}
+\end{listing}
+The function MERGE-SORT divides the list of keys repeatedly until the list has 1 element each in which case the MERGE function gets called to work for the first time. It first merges a set of two lists with single element each. Then it starts merging 2 lists with 2 elements each, both of which are already sorted and so on. Merge sort probably got its name from this sub-process of the algorithm.
+
+Merge sort has the run-time of the order of $n*log(n)$ in all of its best, average and worst cases. It will be interesting to see if the already sorted data is the best case for a merge sort. It cannot sort the keys in place, but it is a stable sorting algorithm.
+\subsection{Quick Sort}\label{sec:quick sort}
+
+\begin{listing}
+  % Pseudocode caption above the code.
+  \caption{Quick sort algorithm from \citet[Ch.~2.3.1]{CLRS_2009}.}
+  \label{lst:quick_algo}
+
+\begin{verbatim}
+QUICK-SORT(A, p, r)
+    if p < r
+        q = PARTITION(A, p, r)
+        QUICK-SORT(A, p, q-1)
+        QUICK-SORT(A, q+1, r)
+
+
+PARTITION(A, p, r)
+    x = A[r]
+    i = p - 1
+    for j = p to r - 1
+        if A[j] <= x
+            i = i + 1
+            swap A[i] and A[j]
+    swap A[i + 1] and A[r]
+    return i + 1
+\end{verbatim}
+\end{listing}
+
+In case of quick-sort, most of the work is done by the PARTITION function. It does the in-place swapping of the list elements. PARTITION function also returns the position of the pivot element to the QUICK-SORT function. Unlike merge sort, here the recursion happens after the PARTITION function (tail recursion), so we could change the recursive function to a loop as well. We have used the recursive approach for now.
+
+Also, quick-sort has a average and best case run-time of the order of $n*log(n)$, the best case has a smaller constant of course. The worst case occurs when each subsequent partition has only one less element than the last partition and will have a theoretical run-time of $n^2$. It will be interesting to see if we indeed run into this scenario!
+
+\subsection{Numpy's numpy.sort}\label{sec:numpy sort}
+The numpy sort function uses quick-sort by default and a combination of other sorts depending on the input data. Quick-sort, merge-sort, radix-sort, tim-sort and even heap sort are used by numpy sort based on the input data and the current state of the sort process. More details can be found here \href{https://docs.scipy.org/doc/numpy/reference/generated/numpy.sort.html}{numpy.sort documentation}
+
+\subsection{Python's default sorted}\label{sec:sorted sort}
+Python uses a now popularly used sort algorithm in many programming languages, called tim-sort which is named after its
+inventor. It is a better version of merge sort, where the algorithm first analyzes the input data to isolate portions that are already sorted. That might explain why python sorted is faster for sorted and reverse-sorted data compared to random data. More details can be found here \href{https://github.com/python/cpython/blob/master/Objects/listsort.txt}{tim-sort explained from implementer himself!}
+
+\section{Methods}\label{sec:methods}
+
+\subsection{Python implementation of algorithms}\label{sec:python implementation}
+
+We wrote the python implementations for heap sort and quick sort following the pseudo-code from \citet{CLRS_2009}. Algorithm for merge sort was slightly modified before using it. We wrote the code in a way that the only input we need to provide is the input array. The functions will calculate the length of the array or sub-array if their algorithm needs the length. Merge sort and quick sort call themselves recursively with 3 parameters, while heap sort does it with a single parameter. All the python codes, data generated and figures can be found at \href{https://github.com/vsnupoudel/termpaper01.}{Github} 
+
+It was interesting that we could implement quick-sort in a few lines. Below we can see partition function for quick-sort 
+\begin{listing}
+  % Pseudocode caption above the code.
+  \caption{Quick sort PARTITION FUNCTION}
+  \label{lst:quick_partition}
+
+\begin{verbatim}
+def quick_comparison_and_swap (input_list, start, end): 
+    pivot_last = input_list[end]
+    l_id = start -1
+    
+    for c_id in range(start,end):
+        if input_list[c_id]<= pivot_last:
+            l_id += 1
+            input_list[l_id], input_list[c_id]
+            = input_list[c_id], input_list[l_id]  
+            
+    input_list[end] , input_list[l_id+1] 
+    =   input_list[l_id+1], input_list[end]  
+
+    return l_id+1  
+\end{verbatim}
+\end{listing}
+
+\subsection{Timing function}\label{sec:timing function}
+
+We used the timeit library to record run-times of the algorithms for a range of data-sizes. The skeleton of the function was provided by professor H.E. Plesser, to which we added function parameters. Since the process can slow down due to other processes in the computer we repeated the timeit experiment 7 times. We use the fastest time among the 7 readings in most of our analysis. We use the same seed at all times, to ensure the data is exactly same.
+
+\begin{listing}
+  % Pseudocode caption above the code.
+  \caption{Time it function used with parameters}
+  \label{lst:time_it function}
+
+\begin{verbatim}
+import numpy as np
+import timeit
+import copy
+
+def timing_function(number_of_data_points, sort_type
+,randomization_type, seed_number=12235):
+    np.random.seed (seed_number)
+    test_data = np.random.random(number_of_data_points,)
+    test_data = list(test_data)
+
+    if randomization_type=='reverse':
+        test_data= sorted(test_data, reverse =True)
+    elif randomization_type=='sorted':
+        test_data= sorted(test_data)
+
+    clock= timeit.Timer(stmt='sort_func (copy(data))', 
+                    globals ={ 'sort_func': sort_type,
+                    'data': test_data ,
+                    'copy': copy.copy })
+    n_ar , t_ar = clock.autorange ()
+    t = clock.repeat ( repeat =7, number = n_ar )
+    return t
+\end{verbatim}
+\end{listing}
+
+\subsection{Analysis, tables and plots}\label{sec:analysis}
+After that, we compare the run-times of the 5 algorithms for all data sizes in a number of line graphs. Data-sizes ranging from 80 thousand and above are plotted as we're interested in the behavior of algorithms for large data size. Similarly, we plot a box-plots of the 7 run-times we got for each of the algorithms and see if they hold any statistical significance. We also compare the run-time for reverse sorted and already sorted data and see if it drastically different than the random data for any of the algorithm.
+
+\subsection{Hard-wares and soft-wares used}\label{sec:hardwares and softwares}
+The run-times were obtained from a machine with the following configuration. 
+
+Also, the following version of python and its libraries were used.
+\begin{itemize}
+\item Processor:    AMD A4-3330MX APU  2.30 GHz
+\item Caches:       L1D-64 KB*2 , L1I-64KB*2, L2 -512KB*2
+\item Memory :      DDR3 4 GB, 800 MHz
+\item OS :          Microsoft Windows 7 Professional
+\end{itemize}
+
+
+Following are the versions of packages used in Python 3.7.4:
+\begin{multicols}{2}
+\begin{itemize}
+\item Pandas:    '0.25.1'
+\item Pandasql:    '0.7.3'
+\item Numpy :      '1.16.5'
+\item matplotlib :   '3.1.1'
+\item nbimporter :  '0.3.1'
+\item ipywidgets: '7.5.1'
+\item timeit :         
+\item pickle :       
+\end{itemize}
+\end{multicols}
+
+
+\section{Results}\label{sec:results}
+From the data collected we try to answer the questions as listed in the introduction section \ref{sec:intro}.
+
+\subsection{Box plot of run-times for random data }\label{scatter}
+To begin, we plotted the box plot of all the 7 time-points to check if we observe any anomalies or outliers. In the analysis that follows, we use only the minimum time among the 7.
+
+In figure \ref{fig:box1} and figure \ref{fig:box2} the run-times had a larger variation in numpy \textbf{sort} and merge sort respectively. The variation in time, we believe is due to other applications or background processes running on the machine.
+
+\begin{figure}[ht]
+\includegraphics[width=\linewidth]{"Boxplots for numpy and python".pdf}
+    \caption{run-times for data size: 10485760 }
+    \label{fig:box1}
+\end{figure}
+
+\begin{figure}[ht]
+\includegraphics[width=\linewidth]{"Boxplots for standalone sorts".pdf}
+    \caption{run-times for data size: 10485760  }
+    \label{fig:box2}
+\end{figure}
+
+\subsection{All sorts for a particular permutation }\label{allsorts}
+
+Figures \ref{fig:random1}-\ref{fig:random3} that follow present the run-time of all algorithms against the same randomized data. We have split the data sizes from 10-1280, 2560-40960 and from 81920 until 10.5 million. In th rest of the figures we will only analyse the last interval. We can see that numpy \textbf{sort} is the most efficient for large list size. Python's \textbf{sorted} function follows numpy \textbf{sort} closely, until numpy finally clinches victory around the 1 million mark.
+
+\begin{figure}[ht]
+\includegraphics[width=\linewidth]{"For -random from-10 to-1280".pdf}
+    \caption{Randomized data of size 10-1280 }
+    \label{fig:random1}
+\end{figure}
+
+%\begin{comment}
+\begin{table}[ht]
+\begin{center}
+
+\begin{tabular}{|c|c|c|c|} 
+\hline
+Sort Type & List type & List length & run-time (sec) \\
+\hline
+numpy sort &	random &	10485760 &	0.632434 \\
+python sorted &	random &	10485760 &	4.222582 \\
+quick sort &	random &	10485760 &	32.919218 \\
+merge sort &	random &	10485760 &	38.122927 \\
+heap sort &	random &	10485760 &	96.435979 \\
+\hline
+\end{tabular}
+\end{center}
+\caption{run-times for sorts for size 10485760}
+\label{tab:table1}
+\end{table}
+%\end{comment}
+
+In figure \ref{fig:random1}, it is worth noting that no clear winner can be judged from the graph. Only in figure \ref{fig:random2} after the data size reaches $20,000$ we see a distinct separation of run-times. Also, note that the x axis of Figure \ref{fig:random1}  and Figure  \ref{fig:random2} are actually a $log base 2$ of the size of the input numeric array. While for figure 3, we have kept the original size on the x axis. 
+
+\begin{figure}[ht]
+\includegraphics[width=\linewidth]{"For -random from-2560 to-40960".pdf}
+    \caption{Randomized data of size 2560-40960}
+    \label{fig:random2}
+\end{figure}
+
+Also, we have drawn graphs for $c1*log*n$ and $c2*log*n$  in the graph. We reached the values of c1 and c2 after a few trials and errors. As we can see, for smaller data sizes the run-times do not lie between our c1 an c2 lines. They do not show any linear behaviour either. In many cases larger data sizes are being sorted faster. This may also be due to other background processes running on our computer. 
+
+\begin{figure}[ht]
+\includegraphics[width=\linewidth]{"For -random from-81920 to-10485760".pdf}
+    \caption{Randomized data of size 81920-10485760 }
+    \label{fig:random3}
+\end{figure}
+
+Nevertheless, the conclusion that can be drawn from figure \ref{fig:random3} is that all of our algorithms show a asymptotic behavior of $n*log*n$ However, In the graph, numpy \textbf{sort} and python \textbf{sorted} look awfully close to the lower limit . To take a closer look, we plot the times in nanoseconds in figure \ref{fig:numpyvspython}. This makes us easier to choose the optimal value of $c1$ from our interactive graph, since we can now choose from larger ranges of values. Numpy \textbf{sort} is over the manually chosen limit of $c1=0.2$ when time is measured in nanoseconds. So when y axis (time) is measured in microseconds the optimal constant is $c1=0.0002$. 
+
+
+Heap sort is the slowest asymptotically with the largest constant $c$. Also, we have to note that the value of the constant depends on the unit of time we choose. We have chosen microseconds here. Comparison is done mathematically in section \ref{math}.
+
+\begin{figure}[ht]
+\includegraphics[width=\linewidth]{"Numpy vs Python -sorted data 81920-10485760".pdf}
+    \caption{Numpy vs Python with lower bound; array 81920-10485760 }
+    \label{fig:numpyvspython}
+\end{figure}
+
+We compare the algorithms for sorted and reverse sorted data as well. We could not get the run-time for quick sort for reverse sorted and already sorted data, as it hits the maximum recursion error after the data size 2560. Figure \ref{fig:sorted1} shows the asymptotic nature of the algorithms for sorted data while Figure \ref{fig:rsorted1} shows it for reverse sorted data. Interestingly, for reverse sorted data the python sorted function is faster than numpy's sort function. Like the randomized data, the run-times are asymtotically bounded between $c1*n*log(n)$  and $c2*n*log(n)$ for the chosen values of $c1$ and $c2$.
+
+\begin{figure}[ht]
+\includegraphics[width=\linewidth]{"For -sorted from-81920 to-10485760".pdf}
+    \caption{Sorted data of size 81920-10485760 }
+    \label{fig:sorted1}
+\end{figure}
+
+\begin{figure}[ht]
+\includegraphics[width=\linewidth]{"For -reverse_sorted from-81920 to-10485760".pdf}
+    \caption{Reverse sorted data of size 81920-10485760 }
+    \label{fig:rsorted1}
+\end{figure}
+
+\subsection{All permutations for a particular sort }\label{allpermut}
+
+Next, we wanted to plot each sort in one graph with the 3 permutations: randomized, sorted and reverse sorted.
+
+\subsubsection{Numpy sort}
+Numpy sort is fastest for sorted data followed by random and reverse sorted data. The difference between sorted and reverse sorted data is significant as shown in the Figure \ref{fig:numpysort}.
+
+\begin{figure}[ht]
+\includegraphics[width=\linewidth]{"For -numpy_sort from-81920 to-10485760".pdf}
+    \caption{Numpy sort for data of size 81920-10485760 }
+    \label{fig:numpysort}
+\end{figure}
+
+\subsubsection{Python sorted}
+Contrary to Numpy sort, python sorted is fastest for reverse sorted data, which is interesting.Also, If we look closely in Figure \ref{fig:rsorted1} and \ref{fig:numpyvspython}, we can see that python sorted was the ultimate winner among other sorts for reverse sorted data, which is a notable observation.
+
+\begin{figure}[ht]
+\includegraphics[width=\linewidth]{"For -python_sorted from-81920 to-10485760".pdf}
+    \caption{Python sorted for data of size 81920-10485760 }
+    \label{fig:pythonsorted}
+\end{figure}
+
+\subsubsection{Quick sort}
+We don't have run-times for reverse sorted and sorted data for quicksort yet, as we hit the maximum recursion limit, when we chose the last element as pivot. The plots will be added in the final version of the term-paper. Figure \ref{fig:quicksort}
+
+\begin{figure}[ht]
+\includegraphics[width=\linewidth]{"For -quick_sort from-81920 to-10485760".pdf}
+    \caption{Quick sort for data of size 81920-10485760 }
+    \label{fig:quicksort}
+\end{figure}
+
+\subsubsection{Heap sort}
+In case of heap sort, the sorted and reverse sorted data are doing better than random data as shown in Figure \ref{fig:heapsort}.
+\begin{figure}[ht]
+\includegraphics[width=\linewidth]{"For -heap_sort from-81920 to-10485760".pdf}
+    \caption{Heap sort for data of size 81920-10485760 }
+    \label{fig:heapsort}
+\end{figure}
+
+\subsubsection{Merge sort}
+In case of merge sort, the times for all 3 permutations of data are giving mixed results. So the permutation of input data does not matter for merge sort.
+
+\begin{figure}[ht]
+\includegraphics[width=\linewidth]{"For -merge_sort from-81920 to-10485760".pdf}
+    \caption{Merge sort for data of size 81920-10485760 }
+    \label{fig:mergesort}
+\end{figure}
+
+
+\subsection{Ratio between heap sort and numpy sort}\label{math}
+Here we try to compute the difference between the fastest sort and the slowest and give them appropriate equations. Heap sort will get takes the most time and also increases (1st derivative) more rapidly, as size of data increases. In table \ref{tab:table2}, we can see that the data-size increases 2 folds each time. If the run-time was quadratic, the run-time should have increased by 4. If it was $n*sqrt(n)$ it should have increased by a factor or $2.828$. If it is $n*log(n)$, it should be between 2 and $2.828$ but should be decreasing slowly.
+
+%\begin{comment}
+\begin{table}[ht]
+\begin{center}
+\begin{tabular}{|c|c|c|c|} 
+\hline
+\textbf{SortType} & 	\textbf{Listlength} & 	\textbf{Singlerun-time} & \textbf{factor} \\ 
+\hline
+heapsort &  40960 &  0.18348 &  --  \\ 
+heapsort &  81920 &  0.525849 &  2.86 \\ 
+heapsort &  163840 &  1.154753 &  2.19 \\ 
+heapsort &  327680 &  2.116844 &  1.83 \\ 
+heapsort &  655360 &  4.535283 &  2.14 \\ 
+heapsort &  1310720 &  11.578997 &  2.55 \\ 
+heapsort &  2621440 &  20.032117 &  1.73 \\ 
+heapsort &  5242880 &  57.685499 &  2.87 \\ 
+heapsort &  10485760 &  96.435979 &  1.67 \\ 
+\hline
+\end{tabular}
+\end{center}
+\caption{Heap sort for random permutation }
+\label{tab:table2}
+\end{table}
+%\end{comment}
+
+The average factor for Heap sort is $2.23$, so the function must be increasing in $n*log(n)$, but the average factor for numpy sort is $1.66$, that is less than linear increase!  Figure \ref{fig:numpylinear} confirms our doubts. numpy sort does it in less than linear time. 
+
+\begin{figure}[ht]
+\includegraphics[width=\linewidth]{"Check against linear runtime".pdf}
+    \caption{Numpy sort, normalized and plotted against line of slope 1 }
+    \label{fig:numpylinear}
+\end{figure}
+
+%\begin{comment}
+\begin{table}[ht]
+\begin{center}
+\begin{tabular}{|c|c|c|c|} 
+\hline
+\textbf{SortType} & 	\textbf{Listlength} & 	\textbf{Single run-time} & \textbf{factor} \\ 
+\hline
+numpy sort & 	40960 & 	0.037461 & --	 \\ 
+numpy sort & 	81920 & 	0.043112 & 	1.15 \\ 
+numpy sort & 	163840 & 	0.029619 & 	0.68 \\ 
+numpy sort & 	327680 & 	0.026161 & 	0.88 \\ 
+numpy sort & 	655360 & 	0.033746 & 	1.28 \\ 
+numpy sort & 	1310720 & 	0.068165 & 	2.01 \\ 
+numpy sort & 	2621440 & 	0.154086 & 	2.26 \\ 
+numpy sort & 	5242880 & 	0.609677 & 	3.95 \\ 
+numpy sort & 	10485760 & 	0.632434 & 	1.03 \\ 
+
+\hline
+\end{tabular}
+\end{center}
+\caption{Numpy sort for random permutation }
+\label{tab:table3}
+\end{table}
+%\end{comment}
+
+\section{Discussion}\label{sec:discussion}
+We have put out the following discussion points from our results and observations.
+
+\begin{itemize}
+\item Among the stand-alone sorts, quick sort was the quickest followed by merge sort and heap sort.
+\item Numpy sort was fastest followed by python's sorted in case of random and sorted data, while python's sorted narrowly finished first in case of reverse sorted data
+\item Run-times for all the sorts do increase by a factor  $n*log(n)$ asymptotically. However, the default sort algorithms have quite small constants compared to the standalone algorithms. The ratio being $0.5/0.0002 = 2500$ between heap sort and numpy sort.
+\item Merge sort is insensitive to the initial permutation of data.
+\item We considerable variance in the experimental run-times we collected, due to other applications running in the computer.
+\item The run-time of heap sort is clearly above linear, while numpy sort sorts numeric data in less than linear time when compared to the input data size.
+\item Details on the project can be found at \href{https://github.com/vsnupoudel/termpaper01}{Github link here}
+\end{itemize}
+
+
+
+\section{Acknowledgements}\label{sec:acknowledgements}
+We would like to thank Professor H.E Plesser and our TA Krista Gilman for their guidance and for answering our questions related to the paper.
+
+%% The next two lines define the bibliography style to be used, and
+%% the bibliography file.
+\bibliographystyle{ACM-Reference-Format}
+\bibliography{sample_bib}
+\end{document}
