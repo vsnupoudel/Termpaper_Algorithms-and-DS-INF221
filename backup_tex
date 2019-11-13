@@ -168,7 +168,7 @@ In case of quick-sort, most of the work is done by the PARTITION function. It do
 Also, quick-sort has a average and best case run-time of the order of $n*log(n)$, the best case has a smaller constant of course. The worst case occurs when each subsequent partition has only one less element than the last partition and will have a theoretical run-time of $n^2$. It will be interesting to see if we indeed run into this scenario!
 
 \subsection{Numpy's numpy.sort}\label{sec:numpy sort}
-The numpy sort function uses quick-sort by default and a combination of other sorts depending on the input data. Quick-sort, merge-sort, radix-sort, tim-sort and even heap sort are used by numpy sort based on the input data and the current state of the sort process. More details can be found here \href{https://docs.scipy.org/doc/numpy/reference/generated/numpy.sort.html}{numpy.sort documentation}
+The numpy sort function uses quick-sort by default and a combination of other sorts depending on the input data. Quick-sort, merge-sort, radix-sort, tim-sort and even heap sort are used by numpy sort based on the input data and the current state of the sort process. More details can be found here \citet{TimPetersArticle}
 
 \subsection{Python's default sorted}\label{sec:sorted sort}
 Python uses a now popularly used sort algorithm in many programming languages, called tim-sort which is named after its
@@ -206,7 +206,7 @@ def quick_comparison_and_swap (input_list, start, end):
 
 \subsection{Timing function}\label{sec:timing function}
 
-We used the timeit library to record run-times of the algorithms for a range of data-sizes. The skeleton of the function was provided by professor H.E. Plesser, to which we added function parameters. Since the process can slow down due to other processes in the computer we repeated the timeit experiment 7 times. We use the fastest time among the 7 readings in most of our analysis. We use the same seed at all times, to ensure the data is exactly same.
+We used the time-it library to record run-times of the algorithms for a range of data-sizes. The skeleton of the function was provided by professor H.E. Plesser, to which we added function parameters. Since the process can slow down due to other processes in the computer we repeated the time-it experiment 7 times. We use the fastest time among the 7 readings in most of our analysis. We use the same seed at all times, to ensure the data is exactly same.
 
 \begin{listing}
   % Pseudocode caption above the code.
@@ -347,7 +347,7 @@ Heap sort is the slowest asymptotically with the largest constant $c$. Also, we 
     \label{fig:numpyvspython}
 \end{figure}
 
-We compare the algorithms for sorted and reverse sorted data as well. We could not get the run-time for quick sort for reverse sorted and already sorted data, as it hits the maximum recursion error after the data size 2560. Figure \ref{fig:sorted1} shows the asymptotic nature of the algorithms for sorted data while Figure \ref{fig:rsorted1} shows it for reverse sorted data. Interestingly, for reverse sorted data the python sorted function is faster than numpy's sort function. Like the randomized data, the run-times are asymtotically bounded between $c1*n*log(n)$  and $c2*n*log(n)$ for the chosen values of $c1$ and $c2$.
+We compare the algorithms for sorted and reverse sorted data as well. We could not get the run-time for quick sort for reverse sorted and already sorted data, as it hits the maximum recursion error after the data size 2560. Figure \ref{fig:sorted1} shows the asymptotic nature of the algorithms for sorted data while Figure \ref{fig:rsorted1} shows it for reverse sorted data. Interestingly, for reverse sorted data the python sorted function is faster than numpy's sort function. Like the randomized data, the run-times are asymptotically bounded between $c1*n*log(n)$  and $c2*n*log(n)$ for the chosen values of $c1$ and $c2$.
 
 \begin{figure}[ht]
 \includegraphics[width=\linewidth]{"For -sorted from-81920 to-10485760".pdf}
@@ -482,7 +482,6 @@ We have put out the following discussion points from our results and observation
 \item The run-time of heap sort is clearly above linear, while numpy sort sorts numeric data in less than linear time when compared to the input data size.
 \item Details on the project can be found at \href{https://github.com/vsnupoudel/termpaper01}{Github link here}
 \end{itemize}
-
 
 
 \section{Acknowledgements}\label{sec:acknowledgements}
