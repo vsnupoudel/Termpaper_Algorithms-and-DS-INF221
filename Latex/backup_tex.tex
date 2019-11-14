@@ -37,6 +37,8 @@
 %    http://ctan.uib.no/macros/latex/required/graphics/grfguide.pdf
 
 \usepackage{verbatim}
+%\usepackage{pythontex}
+%\setpythontexlistingenv
 \usepackage{clrscode3e}  
 \usepackage{listings}
 \lstset{language=Python, basicstyle=\ttfamily}
@@ -58,8 +60,38 @@
 
 \citestyle{acmauthoryear}
 
-%% end of the preamble, start of the body of the document source.
+% For python code styling
+% Source : https://www.overleaf.com/learn/latex/Code_listing
+\usepackage{xcolor}
+ 
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+ 
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+ 
+\lstset{style=mystyle}
+
 \begin{document}
+
 
 %%
 %% The "title" command has an optional parameter,
@@ -98,9 +130,9 @@ We briefly discuss the sorts we are bench-marking here. By following the given p
 \subsection{Heap Sort}\label{sec:heap sort}
 
 \begin{listing}
-\caption{Heap sort algorithm from \citet[Ch.~6.4]{CLRS_2009}.}
+\caption{Pseudo code for Heap sort algorithm from \citet[Ch.~6.4]{CLRS_2009}.}
 \label{lst:heap_algo}
-\begin{verbatim}
+\begin{lstlisting}[language=Python]
 HEAP-SORT(A)
     BUILD-MAX-HEAP(A)
     for i = A.length downto 2
@@ -108,7 +140,7 @@ HEAP-SORT(A)
         A.heap_size = A.heap_size - 1
         MAX-HEAPIFY(A, 1)
     return A
-\end{verbatim}
+\end{lstlisting}
 \end{listing}
 
 Heap sort uses the max-heap (or min heap property) to sort elements in an array. First we build a max heap (BUILD-MAX-HEAP) out of the given array. Then inside a loop, we isolate the root of the heap from the array, storing it at the end of the array. Then we call MAX-HEAPIFY on the rest of the array, storing away the root each time. The heap size decreases by 1 in each of the MAX-HEAPIFY calls. Heap sort is not stable i.e. the keys having exact value might be interchanged. Therefore, it might not be useful while sorting with multiple keys, for instance in a database table.
@@ -118,9 +150,9 @@ Also heap sort does the sorting in place, so no extra memory is required. Theore
 \subsection{Merge Sort}\label{sec:merge sort}
 
 \begin{listing}
-  \caption{Merge sort algorithm used}
+  \caption{Pseudo code for Merge sort algorithm used}
   \label{lst:merge_algo}
-\begin{verbatim}
+\begin{lstlisting}[language=Python]
 def MERGE-SORT(A,p,r):    
     if p = r:
         return A[p]
@@ -130,7 +162,7 @@ def MERGE-SORT(A,p,r):
     D = MERGE(B,C)
     return D
     
-\end{verbatim}
+\end{lstlisting}
 \end{listing}
 The function MERGE-SORT divides the list of keys repeatedly until the list has 1 element each in which case the MERGE function gets called to work for the first time. It first merges a set of two lists with single element each. Then it starts merging 2 lists with 2 elements each, both of which are already sorted and so on. Merge sort probably got its name from this sub-process of the algorithm.
 
@@ -138,17 +170,15 @@ Merge sort has the run-time of the order of $n*log(n)$ in all of its best, avera
 \subsection{Quick Sort}\label{sec:quick sort}
 
 \begin{listing}
-  \caption{Quick sort algorithm from \citet[Ch.~2.3.1]{CLRS_2009}.}
+  \caption{Quick sort Algorithm pseudo-code from \citet[Ch.~2.3.1]{CLRS_2009}.}
   \label{lst:quick_algo}
-
-\begin{verbatim}
+\begin{lstlisting}[language=Python]
 QUICK-SORT(A, p, r)
     if p < r
         q = PARTITION(A, p, r)
         QUICK-SORT(A, p, q-1)
         QUICK-SORT(A, q+1, r)
-
-\end{verbatim}
+\end{lstlisting}
 \end{listing}
 
 In case of quick-sort, most of the work is done by the PARTITION function. It does the in-place swapping of the list elements. PARTITION function also returns the position of the pivot element to the QUICK-SORT function. Unlike merge sort, here the recursion happens after the PARTITION function (tail recursion), so we could change the recursive function to a loop as well. We have used the recursive approach for now.
@@ -176,25 +206,9 @@ We wrote the python implementations for heap sort and quick sort following the p
 It was interesting that we could implement quick-sort in a few lines. Below in Listing \ref{quick_partition} we can see partition function
 for quick-sort.
 \begin{listing}
-  \caption{Quick sort PARTITION FUNCTION}
+  \caption{Quick sort Partition Function}
   \label{quick_partition}
-\begin{verbatim}
-def quick_comparison_and_swap (input_list, start
-                                , end): 
-    pivot_last = input_list[end]
-    l_id = start -1
-    
-    for c_id in range(start,end):
-        if input_list[c_id]<= pivot_last:
-            l_id += 1
-            input_list[l_id], input_list[c_id]
-            = input_list[c_id], input_list[l_id]  
-            
-    input_list[end] , input_list[l_id+1] 
-    =   input_list[l_id+1], input_list[end]  
-
-    return l_id+1  
-\end{verbatim}
+\lstinputlisting[language=Python]{Quick_Partition.py}
 \end{listing}
 
 Also, the merge function for merge sort can be found at Listing \ref{merge_function}
@@ -202,34 +216,7 @@ Also, the merge function for merge sort can be found at Listing \ref{merge_funct
 \begin{listing}
   \caption{Merge sort's Merge function}
   \label{merge_function}
-\begin{verbatim}
-def sort_two_sorted_lists(A,B):
-    len_total= len(A)+len(B)
-    C= [None]*len_total
-    index_total= len_total-1
-    a= A.pop()
-    b= B.pop()
-
-    while True:    
-        if a >= b:
-            C[index_total]= a
-            if len(A) >0 :
-                a= A.pop()
-            else:
-                a= -math.inf
-            index_total -= 1
-        else:
-            C[index_total]= b
-            if len(B) >0 :
-                b= B.pop()
-            else:
-                b= - math.inf
-            index_total -= 1
-
-        if a == - math.inf and b == - math.inf:
-            break
-    return C
-\end{verbatim}
+\lstinputlisting[language=Python]{Merge_function.py}
 \end{listing}
 
 \subsection{Timing function}\label{sec:timing function}
@@ -240,8 +227,7 @@ We used the time-it library to record run-times of the algorithms for a range of
   % Pseudocode caption above the code.
   \caption{Time it function used with parameters}
   \label{time_it function}
-
-\begin{verbatim}
+\begin{lstlisting}[language=Python]
 import numpy as np
 import timeit
 import copy
@@ -258,14 +244,14 @@ def timing_function(number_of_data_points
     elif randomization_type=='sorted':
         test_data= sorted(test_data)
 
-    clock= timeit.Timer(stmt='sort_func (copy(data))', 
-                    globals ={ 'sort_func': sort_type,
-                    'data': test_data ,
-                    'copy': copy.copy })
+    clock=timeit.Timer(stmt='sort_func(copy(data))',
+            globals ={'sort_func': sort_type,
+            'data': test_data,
+            'copy': copy.copy })
     n_ar , t_ar = clock.autorange ()
-    t = clock.repeat ( repeat =7, number=n_ar )
+    t = clock.repeat ( repeat =7, number=n_ar)
     return t
-\end{verbatim}
+\end{lstlisting}
 \end{listing}
 
 Then we defined a helper function displayed in Listing  \ref{call time_it function} in order to call timing function with the range of sizes from 10 to approximately 10.5 million. The time information is stored in a pandas dataframe and exported  individual .csvs.
@@ -274,8 +260,7 @@ Then we defined a helper function displayed in Listing  \ref{call time_it functi
 \begin{listing}
   \caption{Call timeit function and save data to .csv}
   \label{call time_it function}
-
-\begin{verbatim}
+\begin{lstlisting}[language=Python]
 import pandas as pd
 import numpy as np
 
@@ -311,7 +296,7 @@ list_of_dict = get_time_and_write_to_dataframe(np.sort)
 df_= df_.append(list_of_dict)
 df_.to_csv (r'export_dataframe.csv', index = None
 , header=True)
-\end{verbatim}
+\end{lstlisting}
 \end{listing}
 
 \subsection{Analysis, tables and plots}\label{sec:analysis}
@@ -324,7 +309,7 @@ Python implementation for one set of plots is given in Listing \ref{plot functio
 \begin{listing}
   \caption{Example code to generate plots}
   \label{plot function01}
-\begin{verbatim}
+\begin{lstlisting}[language=Python]
 
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -371,13 +356,13 @@ Data_Type_or_List_type,
 List_length """
 
 df_min = pd.DataFrame( ps.sqldf(min_query) )
-\end{verbatim}
+\end{lstlisting}
 \end{listing}
 
 \begin{listing}
   \caption{Example code to generate plots continued}
   \label{plot function02}
-\begin{verbatim}
+\begin{lstlisting}[language=Python]
 def plot_minimum_times(input_type='sorted'
 , lower_limit=81920, upper_limit=10485760
 , c1=0.2, c2=2):
@@ -430,7 +415,7 @@ pickle_object= interact(plot_minimum_times,
      ,upper_limit=  np.unique(df_min['List_length']
          ).tolist()
         , c1=(0,3,0.1), c2=(200,601,50) )
-\end{verbatim}
+\end{lstlisting}
 \end{listing}
 
 
@@ -458,6 +443,20 @@ Following are the versions of packages used in Python 3.7.4:
 \item pickle :  
 \end{itemize}
 \end{multicols}
+
+The final version of appended .csv file, the python notebooks, the plots exported, and the source .tex file are in github as listed in table label{tab:hashes}.
+
+\begin{table}[ht]
+  \caption{Github repository details for files used 
+    \url{https://github.com/vsnupoudel/termpaper01}.}
+  \label{tab:hashes}
+  \begin{tabular}{ll}
+    \hline
+    File & Git hash \\\hline
+    \verb!plots_and_data/dataset_concat.csv! & \verb!a9ddf5d! \\
+        \verb!plots_and_data/dataset_concat.csv! & \verb!a9ddf5d! \\
+  \end{tabular}
+\end{table}
 
 \section{Results}\label{sec:results}
 From the data collected we try to answer the questions as listed in the introduction section \ref{sec:intro}.
@@ -669,7 +668,7 @@ We have put out the following discussion points from our results and observation
 \end{itemize}
 
 \section{Acknowledgements}\label{sec:acknowledgements}
-We would like to thank Professor H.E Plesser and our TA Krista Gilman for their guidance and for answering our questions related to the paper. The term paper gave us an opportunity to revisit our course and understand the intricacies of sorting algorithms, an opportunity to use tools like latex and matplotlib, and also a plenty of mental exercise!
+We would like to thank our Professor H.E Plesser and TA Krista Gilman for their guidance and for answering our questions related to the paper. The term paper gave us an opportunity to revisit our course and understand the intricacies of sorting algorithms, an opportunity to use tools like latex and matplotlib, and also a plenty of mental exercise!
 
 %% The next two lines define the bibliography style to be used, and
 %% the bibliography file.
