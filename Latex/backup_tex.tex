@@ -201,8 +201,8 @@ We worked with data-sizes ranging from just ten elements to 10.5 million element
 
 Python implementations for heap sort and quick sort were written following the pseudo-code from \citet{CLRS_2009}. Algorithm for merge sort was slightly different from \citet{CLRS_2009}. All the python codes, data generated and figures can be found at \href{https://github.com/vsnupoudel/termpaper01.}{Github} 
 
-It was interesting that we could implement quick-sort in a few lines. Below in Listing \ref{quick_partition} we have included the partition function
-for quick-sort.
+It was interesting that we could implement quick-sort in a few lines. Below in Listing \ref{quick_partition} we have included the partition function for quick-sort. Style and colours were set according to \citet{OverleafStyle}.
+
 \begin{listing}
   \caption{Quick sort Partition Function}
   \label{quick_partition}
@@ -301,7 +301,7 @@ We imported the .csv files exported from the timing step and combined them to a 
 
 Additionally, we plotted box-plots of the 7 run-times we got for each of the algorithms to see if they hold any statistical significance. We also compared the run-time for reverse sorted and already sorted data and see if it drastically different than the random data for any of the algorithm. The line plots were plotted in \textbf{nanoseconds}, so that the constants for the run-time, for instance the $c1$ in  $c1*n*log(n)$ remains within 2 decimal points.
 
-Python implementation for one set of plots is given in Listing \ref{plot function01}  and Listing \ref{plot function02} , while others have been included in the GitHub hashes .
+Python implementation for one set of plots is given in Listing \ref{plot function01}  and Listing \ref{plot function02} , while others have been included in the GitHub hashes section \ref{sec:githubfiles}. Also, the colour for the line graphs was taken from \citet{colorcombo}.
 
 \begin{listing}
   \caption{Example code to generate plots}
@@ -313,7 +313,6 @@ import pandas as pd
 import numpy as np
 import pandasql as ps
 import matplotlib as mpl
-
 
 plt.rcParams['axes.titlesize'] = 15
 plt.rcParams['axes.labelsize'] = 12
@@ -415,6 +414,50 @@ pickle_object= interact(plot_minimum_times,
 \end{lstlisting}
 \end{listing}
 
+\subsection{Code used for curve fitting}\label{sec:curvefitting}
+Another way prove that the data-points are following \textbf{$n\log(n)$} behavior, is to fit a curve on the set of points. We've tried this on the mean readings for quick-sort's random permutation of data. Code is given below in \ref{codecurvefit} and the figure \ref{fig:curvefit} is in section \ref{sec:curveresult}.
+
+\begin{listing}
+  \caption{Code for curve fitting quick sort data points}
+  \label{codecurvefit}
+\begin{lstlisting}[language=Python]
+def time(xdata, c1 ):
+    return  c1*xdata *np.log2( xdata )
+
+# Guess the constant of 145
+def guess(c):
+    return [ 
+    time(i,c) for i in  plot_this['List_length']
+    ]
+c_guess = 145 
+
+fig=new_figure()
+plt.plot(plot_this['List_length']
+, plot_this['Runtimes'], '+' )
+plt.plot(plot_this['List_length']
+, guess(c_guess), label='Guess- c=145' )
+
+from scipy.optimize import curve_fit
+
+t = plot_this['Runtimes']
+s = plot_this['List_length']
+g = np.asarray( guess(c_guess) )
+c, cov = curve_fit(time, xdata= s, ydata=t
+, p0= 145 )
+c =  float("{0:.2f}".format(float(c)))
+
+plt.plot(plot_this['List_length'], guess(c)
+, label='Curve fit-c='+str(c) )
+
+plt.xlabel('Size of the list from 10240-10485760')
+plt.ylabel('Time in Nanoseconds')
+plt.title("Curve fitting for mean run-time of quick-sort")
+plt.legend()
+plt.tight_layout()
+plt.show()
+\end{lstlisting}
+\end{listing}
+
 
 \subsection{Hard-wares and soft-wares used}\label{sec:hardwares and softwares}
 The run-times were obtained from a machine with the following configuration. 
@@ -456,7 +499,11 @@ File & Git hash
 \verb!plots_and_data/Line_plots_interactive.ipynb! & \verb!0e8e551! \\
 \verb!plots_and_data/Norm_for_numpy_python.ipynb! & \verb!0e8e551! \\
 \verb!plots_and_data/Box_plots.ipynb! & \verb!0e8e551! \\
-\verb!Time_it_and.../time_it_function.ipynb! & \verb!0e8e551! \\
+\verb!Time_it.../time_it_function.ipynb! & \verb!0e8e551! \\
+\verb!plots_and_data/Statistical_analysis.ipynb! & \verb!0762c23! \\
+\verb!Time_it.../heap_sort_heap_size.ipynb!	& \verb!9856f1c! \\
+\verb!Time_it.../merge_sort.ipynb! & \verb!9856f1c! \\
+\verb!Time_it.../quick_sort.ipynb! & \verb!9856f1c!  \\
 \hline
 \end{tabular}
 \end{table}
@@ -598,7 +645,7 @@ In case of merge sort, the times for all 3 permutations of data are giving mixed
 
 
 \subsection{Comparison between the fastest and slowest sort}\label{math}
-Here we try to compute the difference between the fastest sort and the slowest and give them appropriate equations. Heap sort will takes the most time and also increases more rapidly on \textbf{average}, as size of data increases. In table \ref{tab:table2}, we can see that, the data-size in our experiment is increased by 2 folds each time. In such a scenario, if the run-time was quadratic $n^2$, the run-time should have increased by 4. If it was of the order $n\sqrt{n}$ it should have increased by a factor or $2.828$. And, if it is $n\log(n)$, the factor of should be between $2$ and $2.828$ and decrease towards 2 as the data size increases. The average factor for Heap sort is $2.23$ from \ref{tab:table2}, so the function must be increasing in $n\log(n)$ aysmptotically. 
+Here we try to compute the difference between the fastest sort and the slowest and give them appropriate equations. Heap sort will takes the most time and also increases more rapidly on \textbf{average}, as size of data increases. In table \ref{tab:table2}, we can see that, the data-size in our experiment is increased by 2 folds each time. In such a scenario, if the run-time was quadratic $n^2$, the run-time should have increased by 4. If it was of the order $n\sqrt{n}$ it should have increased by a factor or $2.828$. And, if it is $n\log(n)$, the factor of should be between $2$ and $2.828$ and decrease towards 2 as the data size increases. The average factor for Heap sort is $2.23$ from \ref{tab:table2}, so the function must be increasing in $n\log(n)$ asymptotically. 
 
 %\begin{comment}
 \begin{table}[ht]
@@ -656,6 +703,15 @@ Here we try to compute the difference between the fastest sort and the slowest a
 \end{center}
 \end{table}
 %\end{comment}
+
+\subsection{Curve fit in quick sort data points}\label{sec:curveresult}
+The curve does indeed fit on a $n\log(n)$ curve with constant c=143.64, which is another way of proving that the algorithms do follow a run-time behavior of $n\log(n)$. We picked quick sort data points for this, as it had the most consistent behavior.
+
+\begin{figure}[ht]
+\includegraphics[width=\linewidth]{"Curve fitting for mean run-time of quick-sort".pdf}
+    \caption{Curve follows n*log(n) with c= 143.64 for quick sort}
+    \label{fig:curvefit}
+\end{figure}
 
 \section{Discussion}\label{sec:discussion}
 We have put out the following discussion points from our results and observations.
