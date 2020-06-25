@@ -5,6 +5,4 @@ Termpaper written for Algorithms and Data Structures Course
 
 - We attempt to prove that all of their runtimes are of the order of theta- n*log(n).
 
-- The proof would look more solid if we had collected at least 5 more data points of increasing list sizes.
-
-- However, as we were running on our own personal PCs, the largest numerical list we have consists of 10.48 floating point numbers.
+- The proof would look more solid if we had collected at least 5 more data points of increasing list sizes. However, as we were running on our own personal PCs, the largest numerical list we have consists of 10.48 million floating point numbers.
